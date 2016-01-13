@@ -1,4 +1,5 @@
-//메인 라우트 설정 파일. 
+//메인 컨트롤러.
+//PERSONS 모델의 CRUD, 플래시 메시지 출력을 구현했다.
 
 var app = module.parent.exports.app;
 
