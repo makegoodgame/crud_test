@@ -20,8 +20,7 @@ function output_check(){
                 json = new Object();
 
                 no = $(this).find('td').eq(0).text(), json.no = no.replace(/(\r|\n|\t)/gm,"").trim();
-                title = $(this).find('td').eq(1).text(), json.title = title.replace(/(\r|\n|\t)/gm,"").trim();
-                console.log(title);       
+                title = $(this).find('td').eq(1).text(), json.title = title.replace(/(\r|\n|\t)/gm,"").trim();       
                 writer = $(this).find('td').eq(2).text(), json.writer = writer.replace(/(\r|\n|\t)/gm,"").trim();
                 date = $(this).find('td').eq(3).text(), json.date = date.replace(/(\r|\n|\t)/gm,"").trim();
                 hits = $(this).find('td').eq(4).text(), json.hits = hits.replace(/(\r|\n|\t)/gm,"").trim();
@@ -50,13 +49,8 @@ function output_check(){
         });
     });
 }
-
-app.get('/scrape', function(req, res){
-    //5.5초마다 반복
     setInterval( output_check, 5500 );
     // Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
-    res.send('Check your console!');
-})
 
 app.listen('8081')
 console.log('Magic happens on port 8081');

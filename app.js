@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //added2
-var session = require('express-session')
+var session = require('express-session');
 var flash = require('connect-flash');
 
 var routes = require('./routes/index');
@@ -38,8 +38,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'supersecret', saveUninitialized: true, resave: true}));
 app.use(flash());
 
-app.use('/', routes);
-app.use('/users', users);
+app.use(routes);
+app.use(users);
 
 //added 1
 require('./routes/main.js');

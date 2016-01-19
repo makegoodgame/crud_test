@@ -4,11 +4,23 @@ block content
   h1= title
   form(action='',method='post')
     div
-      label(for='name') Name:
-      input(type='text', name='name', id='name', placeholder='Name here...')
+      label(for='No') No:
+      input(type='text', name='no', id='no', placeholder='no here...')
     div
-      label(for='age') Age:
-      input(type='text', name='age', id='age', placeholder='Age...')
+      label(for='Title') Title:
+      input(type='text', name='title', id='title', placeholder='what title...')
+    div
+      label(for='Writer') Writer:
+      input(type='text', name='writer', id='writer', placeholder='who writer...')    
+    div
+      label(for='Date') Date:
+      input(type='text', name='date', id='date', placeholder='write date...')    
+    div
+      label(for='Hits') Hits:
+      input(type='text', name='hits', id='hits', placeholder='how many hits...')
+    div
+      label(for='File') File:
+      input(type='text', name='file', id='file', placeholder='there is file...')
     div
       input(type='submit', value='Save')
   style.

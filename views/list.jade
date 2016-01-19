@@ -6,16 +6,14 @@ block content
   p
     a(href="/p/new") New
   table
+    - Board.forEach(function(v,i){
     tr
-      th N
-      th Name
-      th Age
-      th Options
-    - persons.forEach(function(v,i){
-    tr
-      td=i
-      td=v.name
-      td #{v.age} years
+      td #{v.no}
+      td #{v.title}
+      td #{v.writer}
+      td #{v.date}
+      td #{v.hits}
+      td #{v.file}
       td
         a(href="/p/edit/"+v._id) Edit
         | 
