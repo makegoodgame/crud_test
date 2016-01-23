@@ -42,8 +42,6 @@ function push_message(title) {
         console.log(result);
     });
 }
-
-
 function output_check(){
         
     request(url, function(error, response, html){
@@ -62,7 +60,7 @@ function output_check(){
                 hits = $(this).find('td').eq(4).text(), json.hits = hits.replace(/(\r|\n|\t)/gm,"").trim();
                 file = $(this).find('td').eq(5).text(), json.file = file.replace(/(\r|\n|\t)/gm,"").trim();
                 array_json.push(json);
-            })
+            });
         }
     
         // To write to the system we will use the built in 'fs' library.
@@ -88,7 +86,7 @@ function output_check(){
                          }
                     });
                 }
-            })    
+            });    
 
 
             Observer.findOne({}, function(err, doc){
@@ -107,14 +105,14 @@ function output_check(){
                                 if(!err){
                                     console.log("Observer 값 수정완료.");                                    
                                 }
-                            })
+                            });
                             new_count++;
                         }else{
                             ox = false;
                         }                       
-                    })                
+                    });                
                 if(new_count == 0) console.log("현재 새로업데이트 된 글이 없습니다.");
-            })          
+            });          
         });
     });
     
@@ -123,10 +121,10 @@ function output_check(){
     }
 }
 
-setInterval( output_check, 5500 );
+setInterval( output_check, 20000 );
     // Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
 
 //push_message();
-app.listen('8081')
+app.listen('8081');
 console.log('Magic happens on port 8081');
 exports = module.exports = app;

@@ -5,7 +5,7 @@ var app = module.parent.exports.app;
 
 //Board 모델을 가져온다.
 var Board = require('../models/board.js');
-
+var Regid = require('../models/regid.js');
 //list 주소가 왔을 때 
 app.get('/list', function(req, res){
 
@@ -89,4 +89,13 @@ app.post('/p/edit/:id', function(req, res){
             res.end(err);    
         }    
     });
+});
+
+app.post('/regid_post', function(req, res){
+    var r = new Regid({
+        instance:req.body.regid
+    })
+    r.save();
+    console.log(req.body.regid);
+    res.render('regid_post.ejs');
 });
