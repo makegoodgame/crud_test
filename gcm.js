@@ -22,11 +22,17 @@ var message = new gcm.Message({
 var server_api_key = 'AIzaSyCdgg-17bQ9QDbs0IlCzczgIszVIzGqdE0';
 var sender = new gcm.Sender(server_api_key);
 var registrationIds = [];
+
 Regid.find({}, function(err, docs){
     docs.forEach(function(output){
         registrationIds.push(output.instance);
     });
+    console.log(registrationIds);
+    sender.send(message, registrationIds, 4, function (err, result) {
+        console.log(result);
+    });
 });
-sender.send(message, registrationIds, 4, function (err, result) {
-    console.log(result);
-});
+
+
+
+
