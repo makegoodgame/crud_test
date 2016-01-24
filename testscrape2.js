@@ -24,7 +24,7 @@ function push_message(p_title,writer,p_link) {
         delayWhileIdle: false,
         timeToLive: 1000,
         data: {
-            title: '테스트공지1',
+            title: '테스트공지2',
             message: writer,
             link: p_link,
             custom_key2: 'custom data2'
@@ -112,6 +112,6 @@ function output_check(){
 }
 
 setInterval( output_check, 10000 );
-app.listen('8081');
+app.listen('8082');
 console.log('Magic happens on port 8081');
 exports = module.exports = app;
