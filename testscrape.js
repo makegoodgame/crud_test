@@ -18,7 +18,7 @@ var push_title = ""; //보낼 타이틀
 var push_writer =""; //보낼 작성자이름
 var push_link = ""; //보낼 링크
 
-function push_message(p_title,writer,link) {
+function push_message(p_title,writer,p_link) {
     var message = new gcm.Message({
         collapseKey: 'demo',
         delayWhileIdle: true,
@@ -26,7 +26,7 @@ function push_message(p_title,writer,link) {
         data: {
             title: p_title,
             message: writer,
-            custom_key1: link,
+            link: p_link,
             custom_key2: 'custom data2'
         }
     });    
@@ -74,7 +74,7 @@ function output_check(){
         fs.writeFile('testoutput.json', JSON.stringify(array_json, null, 7), function(err){
             console.log('File successfully written! - Check your project directory for the output.json file');
         });
-/*
+
         //파일 읽고 내용 로그
         fs.readFile('./testoutput.json', 'utf8', function (err, data) {
             Observer.count({}, function(err,count){
@@ -102,7 +102,7 @@ function output_check(){
                             ox = true ;
                             push_title = output.title;
                             push_writer = output.writer;
-                            console.log("현재 새글이 존재합니다:" + output.no);
+                            push_link = output.link;
                             doc.latest_no = output.no;
                             doc.save(function(err, doc){
                                 if(!err){
@@ -116,19 +116,13 @@ function output_check(){
                     });                
                 if(new_count == 0) console.log("현재 새로업데이트 된 글이 없습니다.");
             });
-            */          
- //       });
-    });
-    
-    //if(ox == true){
-        //push_message(push_title,push_writer, push_link);
-    //}
+                      
+        });
+    });    
+    if(ox == true) push_message(push_title,push_writer, push_link);
 }
 
-setInterval( output_check, 1000 );
-    // Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
-
-//push_message();
+setInterval( output_check, 20000 );
 app.listen('8081');
 console.log('Magic happens on port 8081');
 exports = module.exports = app;
