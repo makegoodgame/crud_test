@@ -10,40 +10,41 @@ var gcm = require('node-gcm');
 mongoose.connect('mongodb://localhost/crud_test'); // connect to our database
 var Observer = require('./models/observer.js');
 var Board = require('./models/board.js');
+var Regid = require('./models/regid.js');
 url = 'http://localhost:3000/list';
 var ox = false;
 
 var push_title = ""; //보낼 타이틀
+var push_writer =""; //보낼 작성자이름
+var push_link = ""; //보낼 링크
 
-
-function push_message(title) {
+function push_message(p_title,writer,link) {
     var message = new gcm.Message({
         collapseKey: 'demo',
         delayWhileIdle: true,
         timeToLive: 3,
         data: {
-            key1: title,
-            key2: 'saltfactory push demo'
+            title: p_title,
+            message: writer,
+            custom_key1: link,
+            custom_key2: 'custom data2'
         }
-    });
-
-    var server_access_key = 'AIzaSyCfpln55R5GEXaYuDNs1sdKlkRmhAgEVOY';
-    var sender = new gcm.Sender(server_access_key);
+    });    
+    var server_api_key = 'AIzaSyCdgg-17bQ9QDbs0IlCzczgIszVIzGqdE0';
+    var sender = new gcm.Sender(server_api_key);
     var registrationIds = [];
 
-    var registration_id = 'APA91bHJ_PmCe8EsFBNTZLYI2gfgnSWCnvD1tIl5hXJQcTr_YtRBcbC__ust0fV8q1rtGfW4bzT8ZSf9Xy5F2yxTK1W1vW-U6F9by8TsT_Z6wRlXXki_2sZG9tUlWfS0NWrx-rSa7QWi';
-    // At least one required
-    registrationIds.push(registration_id);
-
-    /**
-     * Params: message-literal, registrationIds-array, No. of retries, callback-function
-     **/
-    sender.send(message, registrationIds, 4, function (err, result) {
-        console.log(result);
+    Regid.find({}, function(err, docs){
+        docs.forEach(function(output){
+            registrationIds.push(output.instance);
+        });
+        console.log(registrationIds);
+        sender.send(message, registrationIds, 4, function (err, result) {
+            console.log(result);
+        });
     });
 }
-function output_check(){
-        
+function output_check(){    
     request(url, function(error, response, html){
         if(!error){
             var $ = cheerio.load(html);
@@ -99,6 +100,7 @@ function output_check(){
                         if(output.no > ob_value){                            
                             ox = true ;
                             push_title = output.title;
+                            push_writer = output.writer;
                             console.log("현재 새글이 존재합니다:" + output.no);
                             doc.latest_no = output.no;
                             doc.save(function(err, doc){
@@ -117,7 +119,7 @@ function output_check(){
     });
     
     if(ox == true){
-        push_message(push_title);
+        push_message(push_title,push_writer, push_link);
     }
 }
 
