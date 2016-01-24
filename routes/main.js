@@ -31,7 +31,6 @@ app.post('/p/new', function(req, res){
         no: req.body.no,
         title: req.body.title,
         writer: req.body.writer,
-        //data: req.body.date,
         hits: req.body.hits,
         file: req.body.file
      });
@@ -73,10 +72,11 @@ app.get('/p/edit/:id', function(req, res){
 //수정한 것을 등록한다. post
 app.post('/p/edit/:id', function(req, res){
     Board.findOne({ _id: req.params.id }, function(err, doc){
-    	
         if(!err){
-            doc.name = req.body.name; 
-            doc.age = req.body.age;
+            doc.title = req.body.title;
+            doc.writer = req.body.writer;
+            doc.hits = req.body.hits;
+            doc.file = req.body.file;
             doc.save(function(err, doc){
                 if(!err){
                 	req.flash('message', '사람을 수정했습니다.'); // Save the flash message

@@ -9,13 +9,12 @@ block content
     - Board.forEach(function(v,i){
     tr
       td #{v.no}
-      td #{v.title}
+      td 
+        a(href="/p/edit/"+v._id) #{v.title}        
       td #{v.writer}
       td #{v.date}
       td #{v.hits}
       td #{v.file}
       td
-        a(href="/p/edit/"+v._id) Edit
-        | 
         a(href="/p/delete/"+v._id) Delete
     - });

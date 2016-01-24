@@ -2,14 +2,20 @@ extends layout
 
 block content
   h1= title
-  p=JSON.stringify(person)
+  p=JSON.stringify(board)
   form(action='',method='post')
     div
-      label(for='name') Name:
-      input(type='text', name='name', id='name', placeholder='Name here...', value=person.name)
+      label(for='Title') Title:
+      input(type='text', name='title', id='title', placeholder='what title...')
     div
-      label(for='age') Age:
-      input(type='text', name='age', id='age', placeholder='Age...', value=person.age)
+      label(for='Writer') Writer:
+      input(type='text', name='writer', id='writer', placeholder='who writer...')    
+    div
+      label(for='Hits') Hits:
+      input(type='text', name='hits', id='hits', placeholder='how many hits...')
+    div
+      label(for='File') File:
+      input(type='text', name='file', id='file', placeholder='there is file...')
     div
       input(type='submit', value='Save')
   style.

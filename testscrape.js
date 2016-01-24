@@ -49,13 +49,14 @@ function output_check(){
         if(!error){
             var $ = cheerio.load(html);
 
-            var no, title, writer, date, hits, file;
+            var no, title, link, writer, date, hits, file;
             var array_json = [];
             var json;
             $('table tr').each(function(){
                 json = new Object();
                 no = $(this).find('td').eq(0).text(), json.no = no.replace(/(\r|\n|\t)/gm,"").trim();
                 title = $(this).find('td').eq(1).text(), json.title = title.replace(/(\r|\n|\t)/gm,"").trim();       
+                link = $(this).find('a').attr('href'); json.link = "http://localhost:3000" + link
                 writer = $(this).find('td').eq(2).text(), json.writer = writer.replace(/(\r|\n|\t)/gm,"").trim();
                 date = $(this).find('td').eq(3).text(), json.date = date.replace(/(\r|\n|\t)/gm,"").trim();
                 hits = $(this).find('td').eq(4).text(), json.hits = hits.replace(/(\r|\n|\t)/gm,"").trim();
@@ -70,10 +71,10 @@ function output_check(){
         // Parameter 2 :  JSON.stringify(json, null, 4) - the data to write, here we do an extra step by calling JSON.stringify to make our JSON easier to read
         // Parameter 3 :  callback function - a callback function to let us know the status of our function
 
-        fs.writeFile('testoutput.json', JSON.stringify(array_json, null, 6), function(err){
+        fs.writeFile('testoutput.json', JSON.stringify(array_json, null, 7), function(err){
             console.log('File successfully written! - Check your project directory for the output.json file');
         });
-
+/*
         //파일 읽고 내용 로그
         fs.readFile('./testoutput.json', 'utf8', function (err, data) {
             Observer.count({}, function(err,count){
@@ -114,16 +115,17 @@ function output_check(){
                         }                       
                     });                
                 if(new_count == 0) console.log("현재 새로업데이트 된 글이 없습니다.");
-            });          
-        });
+            });
+            */          
+ //       });
     });
     
-    if(ox == true){
-        push_message(push_title,push_writer, push_link);
-    }
+    //if(ox == true){
+        //push_message(push_title,push_writer, push_link);
+    //}
 }
 
-setInterval( output_check, 20000 );
+setInterval( output_check, 1000 );
     // Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
 
 //push_message();
