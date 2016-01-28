@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
  
 var observerSchema = new Schema({
+    category:{type:String},
     latest_no:{type:Number, default: 0} 
 });
 
