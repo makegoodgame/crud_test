@@ -1,13 +1,19 @@
 var express = require('express');
+var path = require('path');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/crud_test');
 var app = exports.app = express();
 
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(routes);
-require('./routes/main.js');
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;

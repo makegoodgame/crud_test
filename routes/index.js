@@ -11,5 +11,13 @@ router.get('/', function(req, res) {
 router.get('/regid_post', function(req, res) {
   res.render('regid_post.ejs');
 });
+router.post('/regid_post', function(req, res){
+    var r = new Regid({
+        instance:req.body.regid
+    })
+    r.save();
+    console.log(req.body.regid);
+    res.render('regid_post.ejs');
+});
 
 module.exports = router;
