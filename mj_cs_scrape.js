@@ -101,10 +101,10 @@ function output_check(){
                       
         });       
     });    
-    //if(ox == true) push_message(push_title,push_link);
+    if(ox == true) push_message(push_title,push_link);
 }
 
-setInterval( output_check, 10000 );
-app.listen('8081');
-console.log('Magic happens on port 8081');
+setInterval( output_check, 30000 );
+app.listen('8083');
+console.log('Magic happens on port 8083');
 exports = module.exports = app;

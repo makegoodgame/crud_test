@@ -10,7 +10,7 @@ var gcm = require('node-gcm');
 mongoose.connect('mongodb://localhost/crud_test'); // connect to our database
 var Observer = require('./models/observer.js');
 //var Board = require('./models/board.js');
-//var Regid = require('./models/regid.js');
+var Regid = require('./models/regid.js');
 url = 'http://www.mju.ac.kr/mbs/mjukr/jsp/board/list.jsp?boardId=11294&mcategoryId=&id=mjukr_050101000000';
 var ox = false;
 
@@ -26,7 +26,7 @@ function push_message(p_title,p_link) {
             title: '명지대 일반공지 알림',
             message: p_title,
             link: p_link,
-            category: 'cs_normal'
+            category: 'mj_normal'
         }
     });    
     var server_api_key = 'AIzaSyCdgg-17bQ9QDbs0IlCzczgIszVIzGqdE0';
@@ -56,7 +56,7 @@ function output_check(){
                 json = new Object();
                 no = $(this).find('td').eq(0).text(), json.no = no.replace(/(\r|\n|\t)/gm,"").trim();
                 title = $(this).find('td').eq(1).text(), json.title = title.replace(/(\r|\n|\t)/gm,"").trim();       
-                link = $(this).find('a').attr('href'); json.link = "http://www.mju.ac.kr/mbs/mjukr/jsp/board/" + link
+                link = $(this).find('a').attr('href'); json.link = "http://www.mju.ac.kr/mbs/mjukr/jsp/board/" + link + "&versionType=pc"
                 date = $(this).find('td').eq(2).text(), json.date = date.replace(/(\r|\n|\t)/gm,"").trim();
                 hits = $(this).find('td').eq(3).text(), json.hits = hits.replace(/(\r|\n|\t)/gm,"").trim();
                 file = $(this).find('td').eq(4).text(), json.file = file.replace(/(\r|\n|\t)/gm,"").trim();
@@ -110,10 +110,10 @@ function output_check(){
         
     });
         
-    //if(ox == true) push_message(push_title, push_link);
+    if(ox == true) push_message(push_title, push_link);
 }
 
 setInterval( output_check, 20000 );
 app.listen('8082');
-console.log('Magic happens on port 8081');
+console.log('Magic happens on port 8082');
 exports = module.exports = app;

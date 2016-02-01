@@ -9,6 +9,7 @@ var gcm = require('node-gcm');
 
 mongoose.connect('mongodb://localhost/crud_test'); // connect to our database
 var Observer = require('./models/observer.js');
+var Regid = require('./models/regid.js');
 url = 'http://lib.mju.ac.kr/bbs/Bbs.ax?bbsID=1';
 var ox = false;
 
@@ -22,7 +23,7 @@ function push_message(p_title,p_link) {
         timeToLive: 1000,
         data: {
             title: '도서관 홈페이지 공지 알림',
-            message: writer,
+            message: p_title,
             link: p_link,
             category: 'mj_lib'
         }
@@ -104,10 +105,10 @@ function output_check(){
         
     });
         
-    //if(ox == true) push_message(push_title,push_link);
+    if(ox == true) push_message(push_title,push_link);
 }
 
 setInterval( output_check, 20000 );
-app.listen('8082');
+app.listen('8081');
 console.log('Magic happens on port 8081');
 exports = module.exports = app;

@@ -1,19 +1,11 @@
 [
       {
-            "no": "1047",
-            "title": "(인문캠) 2016년 신년 휴무 관련 도서관 이용안내",
-            "link": "http://lib.mju.ac.kr/../bbs/Detail.ax?bbsID=1&articleID=1049&currentPage=1",
-            "writer": "강정원",
-            "date": "2015-12-28",
-            "hits": "886"
-      },
-      {
             "no": "1048",
             "title": "(자연캠) 2016년 신년 휴무 관련 도서관 이용안내",
             "link": "http://lib.mju.ac.kr/../bbs/Detail.ax?bbsID=1&articleID=1050&currentPage=1",
             "writer": "이문현",
             "date": "2015-12-30",
-            "hits": "362"
+            "hits": "377"
       },
       {
             "no": "1049",
@@ -21,7 +13,7 @@
             "link": "http://lib.mju.ac.kr/../bbs/Detail.ax?bbsID=1&articleID=1051&currentPage=1",
             "writer": "강정원",
             "date": "2016-01-07",
-            "hits": "86"
+            "hits": "89"
       },
       {
             "no": "1050",
@@ -29,7 +21,7 @@
             "link": "http://lib.mju.ac.kr/../bbs/Detail.ax?bbsID=1&articleID=1052&currentPage=1",
             "writer": "강정원",
             "date": "2016-01-07",
-            "hits": "268"
+            "hits": "274"
       },
       {
             "no": "1051",
@@ -37,7 +29,7 @@
             "link": "http://lib.mju.ac.kr/../bbs/Detail.ax?bbsID=1&articleID=1053&currentPage=1",
             "writer": "강정원",
             "date": "2016-01-11",
-            "hits": "97"
+            "hits": "101"
       },
       {
             "no": "1052",
@@ -45,7 +37,7 @@
             "link": "http://lib.mju.ac.kr/../bbs/Detail.ax?bbsID=1&articleID=1054&currentPage=1",
             "writer": "강정원",
             "date": "2016-01-12",
-            "hits": "80"
+            "hits": "86"
       },
       {
             "no": "1053",
@@ -53,7 +45,7 @@
             "link": "http://lib.mju.ac.kr/../bbs/Detail.ax?bbsID=1&articleID=1055&currentPage=1",
             "writer": "강정원",
             "date": "2016-01-13",
-            "hits": "667"
+            "hits": "715"
       },
       {
             "no": "1054",
@@ -61,7 +53,7 @@
             "link": "http://lib.mju.ac.kr/../bbs/Detail.ax?bbsID=1&articleID=1056&currentPage=1",
             "writer": "강정원",
             "date": "2016-01-14",
-            "hits": "367"
+            "hits": "404"
       },
       {
             "no": "1055",
@@ -69,7 +61,7 @@
             "link": "http://lib.mju.ac.kr/../bbs/Detail.ax?bbsID=1&articleID=1057&currentPage=1",
             "writer": "강정원",
             "date": "2016-01-20",
-            "hits": "258"
+            "hits": "305"
       },
       {
             "no": "1056",
@@ -77,6 +69,14 @@
             "link": "http://lib.mju.ac.kr/../bbs/Detail.ax?bbsID=1&articleID=1058&currentPage=1",
             "writer": "강정원",
             "date": "2016-01-27",
-            "hits": "37"
+            "hits": "136"
+      },
+      {
+            "no": "1057",
+            "title": "(인문캠) 설날 연휴 도서관 이용 안내",
+            "link": "http://lib.mju.ac.kr/../bbs/Detail.ax?bbsID=1&articleID=1059&currentPage=1",
+            "writer": "강정원",
+            "date": "2016-02-01",
+            "hits": "52"
       }
 ]
