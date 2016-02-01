@@ -7,6 +7,7 @@ var app = exports.app = express();
 
 app.set('view engine', 'jade');
 app.use(routes);
+require('./routes/main.js');
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
